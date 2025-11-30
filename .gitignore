@@ -1,0 +1,61 @@
+# ---------------------------
+# General
+# ---------------------------
+*.log
+*.tmp
+*.temp
+*.DS_Store
+
+# ---------------------------
+# Python / Django backend
+# ---------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.sqlite3
+env/
+venv/
+ENV/
+build/
+*.egg-info/
+*.egg
+
+# Django specific
+/staticfiles/
+/media/
+/db.sqlite3
+*.pot
+*.mo
+
+# Virtual environment
+.env
+.ssl/
+
+# ---------------------------
+# Node / Frontend
+# ---------------------------
+node_modules/
+dist/
+build/
+.npm/
+.cache/
+coverage/
+
+# React or Vite
+.vite/
+vite.config.*.timestamp
+
+# ---------------------------
+# IDE / Editor
+# ---------------------------
+.vscode/
+.idea/
+*.iml
+
+# ---------------------------
+# OS generated files
+# ---------------------------
+Thumbs.db
+Desktop.ini

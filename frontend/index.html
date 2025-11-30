@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Smart Task Analyzer</h1>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="results-tab">Results</button>
+      <button class="tab" data-tab="graph-tab">Dependency Graph</button>
+      <button class="tab" data-tab="matrix-tab">Eisenhower Matrix</button>
+    </div>
+
+    <div id="results-tab" class="tab-content active">
+      <section class="input">
+        <h2>Add Task</h2>
+        <form id="task-form">
+          <input id="title" placeholder="Title" required />
+          <input id="due_date" type="date" required/>
+          <input id="estimated_hours" type="number" step="0.5" placeholder="Estimated hours" required/>
+          <input id="importance" type="number" min="1" max="10" placeholder="Rate importance 1-10" required />
+          <input id="dependencies" placeholder="Dependencies (comma-separated IDs)" />
+          <button type="submit">Add</button>
+        </form>
+
+        <h3>Or paste tasks as JSON</h3>
+        <textarea id="json-input" placeholder='[{"id":"1","title":"..."}]'></textarea>
+
+        <div class="controls">
+          <select id="strategy">
+            <option value="smart">Smart Balance</option>
+            <option value="fastest">Fastest Wins</option>
+            <option value="impact">High Impact</option>
+            <option value="deadline">Deadline Driven</option>
+          </select>
+
+          <button id="analyze-btn">Analyze Tasks</button>
+          <button id="suggest-btn">Suggest Top 3</button>
+        </div>
+
+        <div id="message" class="message"></div>
+      </section>
+
+      <section class="output">
+        <h2>Results</h2>
+        <div id="results"></div>
+      </section>
+    </div>
+
+    <div id="graph-tab" class="tab-content">
+      <h2>Dependency Graph</h2>
+      <svg id="graph-canvas"></svg>
+    </div>
+
+    <div id="matrix-tab" class="tab-content">
+      <h2>Eisenhower Matrix</h2>
+
+      <div class="matrix-legend">
+        <span>Quadrant mapping: X-axis = Importance (low → high), Y-axis = Urgency (low → high)</span>
+      </div>
+
+      <div id="matrix" class="matrix-grid" aria-hidden="false">
+        <div class="quadrant q1">
+          <h3>Do First (Urgent & Important)</h3>
+          <div class="q-list" id="q1"></div>
+        </div>
+        <div class="quadrant q2">
+          <h3>Schedule (Important, Not Urgent)</h3>
+          <div class="q-list" id="q2"></div>
+        </div>
+        <div class="quadrant q3">
+          <h3>Delegate (Urgent, Not Important)</h3>
+          <div class="q-list" id="q3"></div>
+        </div>
+        <div class="quadrant q4">
+          <h3>Eliminate (Not Urgent, Not Important)</h3>
+          <div class="q-list" id="q4"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
